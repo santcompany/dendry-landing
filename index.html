@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dendry Rios — Comunicação Estratégica para Líderes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --noir:    #0A0A0A;
+  --deep:    #111111;
+  --carbon:  #181818;
+  --smoke:   #242424;
+  --graphite:#343434;
+  --silver:  #8A8A8A;
+  --pearl:   #D4D4D4;
+  --white:   #F5F5F0;
+  --gold:    #C8963C;
+  --gold-lt: #DFB05A;
+  --gold-dk: #A07828;
+  --gold-dim:rgba(200,150,60,0.12);
+  --gold-glow:rgba(200,150,60,0.08);
+  --border:  rgba(212,212,212,0.08);
+  --border-g:rgba(200,150,60,0.2);
+  --muted:   rgba(212,212,212,0.5);
+  --muted2:  rgba(212,212,212,0.22);
+}
+html{scroll-behavior:smooth;}
+*{cursor:none!important;}
+
+/* ── PEN CURSOR ── */
+#pen{position:fixed;z-index:9999;pointer-events:none;font-size:20px;transform:translate(-2px,-18px) rotate(-20deg);transition:transform .2s,font-size .2s;}
+#pen-dot{position:fixed;z-index:9998;pointer-events:none;width:4px;height:4px;border-radius:50%;background:var(--gold);transform:translate(-2px,-2px);box-shadow:0 0 8px var(--gold);transition:all .2s;}
+
+body{font-family:'Outfit',sans-serif;background:var(--noir);color:var(--pearl);overflow-x:hidden;}
+
+/* Subtle noise */
+body::after{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;opacity:.022;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px;}
+
+/* Diagonal gold accent line across page */
+body::before{content:'';position:fixed;top:0;right:0;width:1px;height:100vh;background:linear-gradient(to bottom,transparent 0%,var(--gold) 30%,var(--gold) 70%,transparent 100%);opacity:.15;z-index:0;pointer-events:none;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;width:100%;z-index:500;height:68px;padding:0 64px;display:flex;align-items:center;justify-content:space-between;transition:all .4s;}
+nav.scrolled{background:rgba(10,10,10,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.nav-logo{text-decoration:none;display:flex;flex-direction:column;line-height:1;}
+.nav-logo-name{font-family:'Italiana',serif;font-size:22px;letter-spacing:3px;color:var(--white);}
+.nav-logo-tag{font-size:7.5px;font-weight:400;letter-spacing:3.5px;text-transform:uppercase;color:var(--muted2);margin-top:3px;}
+.nav-links{display:flex;gap:36px;list-style:none;align-items:center;}
+.nav-links a{font-size:9.5px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--white);}
+.nav-cta{
+  background:transparent;color:var(--gold);
+  padding:9px 22px;font-family:'Outfit',sans-serif;font-size:9.5px;font-weight:600;
+  letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;
+  border:1px solid var(--border-g);transition:all .3s;display:inline-block;
+}
+.nav-cta:hover{background:var(--gold);color:var(--noir);}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:6px;}
+.hamburger span{display:block;width:22px;height:1px;background:var(--pearl);}
+.mob-menu{position:fixed;inset:0;z-index:600;background:var(--noir);display:flex;flex-direction:column;justify-content:center;padding:64px 44px;transform:translateX(100%);transition:transform .45s cubic-bezier(.4,0,.2,1);}
+.mob-menu.open{transform:translateX(0);}
+.mob-close{position:absolute;top:28px;right:28px;background:none;border:none;font-size:24px;color:var(--gold);}
+.mob-menu a{font-family:'Italiana',serif;font-size:clamp(38px,9vw,56px);color:var(--muted);text-decoration:none;padding:10px 0;border-bottom:1px solid var(--border);display:block;transition:color .2s,padding-left .2s;}
+.mob-menu a:hover{color:var(--white);padding-left:12px;}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:grid;grid-template-columns:58% 42%;overflow:hidden;position:relative;}
+
+.hero-left{
+  padding:140px 80px 90px;display:flex;flex-direction:column;justify-content:center;
+  background:var(--deep);position:relative;z-index:2;
+}
+.hero-left::after{content:'';position:absolute;right:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--gold-lt),transparent);opacity:.3;}
+
+/* Diagonal slash accent */
+.hero-left::before{
+  content:'';position:absolute;bottom:0;left:0;
+  width:100%;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  opacity:.2;
+}
+
+.hero-right{
+  position:relative;overflow:hidden;
+  background:var(--carbon);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+}
+
+/* Photo frame */
+.photo-frame{
+  position:relative;
+  width:clamp(220px,28vw,360px);
+  z-index:3;
+}
+.photo-glass{
+  width:100%;aspect-ratio:3/4;
+  background:var(--smoke);
+  position:relative;overflow:hidden;
+  border:1px solid rgba(200,150,60,.2);
+  box-shadow:0 0 0 8px rgba(200,150,60,.03),0 30px 80px rgba(0,0,0,.7);
+}
+.photo-glass::before{
+  content:'';position:absolute;top:0;left:0;right:0;bottom:0;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg,transparent 50%,rgba(10,10,10,.9) 100%);
+}
+.ph-inner{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;
+  background:radial-gradient(ellipse at 50% 30%,rgba(200,150,60,.06) 0%,var(--smoke) 65%);
+}
+.ph-emoji{font-size:clamp(60px,10vw,100px);opacity:.25;}
+.ph-lbl{font-size:9.5px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted2);}
+.ph-name{
+  position:absolute;bottom:0;left:0;right:0;z-index:3;
+  padding:24px 22px;
+}
+.ph-name-txt{font-family:'Italiana',serif;font-size:26px;color:var(--white);letter-spacing:2px;margin-bottom:4px;}
+.ph-name-role{font-size:8.5px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
+
+/* Corner accents */
+.photo-frame::before{content:'';position:absolute;top:-10px;left:-10px;width:28px;height:28px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);z-index:4;opacity:.6;}
+.photo-frame::after{content:'';position:absolute;bottom:-10px;right:-10px;width:28px;height:28px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);z-index:4;opacity:.6;}
+
+/* Stats panel right bottom */
+.hero-right-stats{
+  position:absolute;bottom:0;left:0;right:0;z-index:4;
+  display:flex;background:rgba(10,10,10,.85);backdrop-filter:blur(12px);
+  border-top:1px solid var(--border);
+}
+.hrs{flex:1;padding:16px 18px;border-right:1px solid var(--border);transition:background .25s;}
+.hrs:last-child{border-right:none;}
+.hrs:hover{background:var(--gold-dim);}
+.hrs-val{font-family:'Italiana',serif;font-size:24px;color:var(--gold);line-height:1;}
+.hrs-lbl{font-size:8px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--muted2);margin-top:3px;}
+
+/* Right BG watermark */
+.hero-right-wm{
+  position:absolute;z-index:0;
+  font-family:'Italiana',serif;font-size:clamp(80px,14vw,180px);
+  color:rgba(200,150,60,.04);
+  line-height:1;right:-10px;bottom:-20px;
+  letter-spacing:2px;pointer-events:none;user-select:none;
+  white-space:nowrap;
+}
+
+/* Hero text */
+.h-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:24px;animation:fadeUp .9s ease both;}
+.heb-line{width:28px;height:1px;background:var(--gold);}
+.heb-txt{font-size:9px;font-weight:500;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);}
+.hero-h1{
+  font-family:'Italiana',serif;
+  font-size:clamp(50px,5.8vw,88px);
+  line-height:.96;letter-spacing:.5px;
+  color:var(--white);margin-bottom:8px;
+  animation:fadeUp .9s ease .07s both;
+}
+.hero-h1 em{font-style:normal;color:var(--gold-lt);display:block;}
+.hero-kicker{
+  font-family:'Libre Baskerville',serif;font-style:italic;
+  font-size:clamp(16px,2.2vw,24px);color:var(--muted);
+  margin-bottom:28px;line-height:1.5;
+  animation:fadeUp .9s ease .13s both;
+}
+.hero-p{
+  font-size:15px;font-weight:300;line-height:1.9;color:var(--muted);
+  max-width:450px;margin-bottom:38px;
+  animation:fadeUp .9s ease .19s both;
+}
+.hero-p strong{color:var(--white);font-weight:500;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px;animation:fadeUp .9s ease .25s both;}
+
+/* Credentials strip */
+.cred-strip{display:flex;gap:0;border:1px solid var(--border);width:fit-content;animation:fadeUp .9s ease .31s both;}
+.cs-item{padding:12px 18px;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:2px;}
+.cs-item:last-child{border-right:none;}
+.cs-ico{font-size:14px;margin-bottom:2px;}
+.cs-val{font-family:'Italiana',serif;font-size:16px;color:var(--gold);line-height:1;}
+.cs-lbl{font-size:7.5px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--muted2);}
+
+/* BTNs */
+.btn-gold{background:var(--gold);color:var(--noir);padding:14px 30px;font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;border:none;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all .3s;}
+.btn-gold:hover{background:var(--gold-lt);transform:translateY(-2px);box-shadow:0 10px 36px rgba(200,150,60,.3);}
+.btn-ghost{background:transparent;color:var(--pearl);padding:13px 30px;font-family:'Outfit',sans-serif;font-size:10px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;border:1px solid var(--border);text-decoration:none;display:inline-block;transition:all .25s;}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+.btn-outline-gold{background:transparent;color:var(--gold);padding:13px 30px;font-family:'Outfit',sans-serif;font-size:10px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;border:1px solid var(--border-g);text-decoration:none;display:inline-block;transition:all .25s;}
+.btn-outline-gold:hover{background:var(--gold);color:var(--noir);}
+.btn-wa{display:flex;align-items:center;gap:9px;background:#25D366;color:#fff;padding:13px 24px;font-family:'Outfit',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all .25s;}
+.btn-wa:hover{background:#1db954;transform:translateY(-2px);}
+.btn-txt{background:transparent;color:var(--gold);font-family:'Outfit',sans-serif;font-size:9.5px;font-weight:500;letter-spacing:2px;text-transform:uppercase;border:none;text-decoration:none;display:inline-flex;align-items:center;gap:8px;border-bottom:1px solid rgba(200,150,60,.25);padding-bottom:2px;transition:all .2s;}
+.btn-txt:hover{gap:14px;border-color:var(--gold);}
+
+/* ── TICKER ── */
+.ticker{background:var(--carbon);padding:13px 0;overflow:hidden;z-index:10;position:relative;border-top:1px solid rgba(200,150,60,.12);border-bottom:1px solid rgba(200,150,60,.12);}
+.ticker-inner{display:flex;animation:ticker 44s linear infinite;width:max-content;}
+.t-item{display:flex;align-items:center;gap:18px;padding:0 32px;white-space:nowrap;font-family:'Outfit',sans-serif;font-size:9.5px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted2);}
+.t-sep{color:var(--gold);font-size:10px;}
+
+/* ── SECTIONS ── */
+section,div.sec{padding:108px 80px;position:relative;z-index:1;}
+.s-eye{font-size:9px;font-weight:500;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.s-eye::before{content:'';width:20px;height:1px;background:var(--gold);flex-shrink:0;}
+.s-h{font-family:'Italiana',serif;font-size:clamp(38px,4.5vw,66px);line-height:1.0;margin-bottom:18px;color:var(--white);}
+.s-h em{font-style:normal;color:var(--gold);}
+.s-p{font-size:15px;font-weight:300;line-height:1.9;color:var(--muted);max-width:520px;}
+
+/* ── DIAGNÓSTICO INTERATIVO ── */
+.sec-diag{background:var(--deep);padding:0;overflow:hidden;}
+.diag-wrap{display:grid;grid-template-columns:45% 55%;min-height:720px;}
+
+/* LEFT intro panel */
+.diag-intro{
+  padding:90px 72px;display:flex;flex-direction:column;justify-content:center;
+  background:var(--carbon);border-right:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.diag-intro::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 45% at 15% 45%,rgba(200,150,60,.07) 0%,transparent 65%);}
+.di-c{position:relative;z-index:1;}
+
+/* Quiz panel */
+.diag-quiz{
+  padding:70px 64px;display:flex;flex-direction:column;justify-content:center;
+  background:var(--deep);position:relative;overflow:hidden;
+}
+.diag-quiz::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 40% at 80% 30%,rgba(200,150,60,.05) 0%,transparent 65%);}
+.dq-c{position:relative;z-index:1;width:100%;}
+
+/* Quiz UI */
+.quiz-header{margin-bottom:32px;}
+.quiz-step-indicator{display:flex;gap:6px;margin-bottom:18px;}
+.qsi-dot{width:24px;height:3px;background:var(--border);transition:background .3s;}
+.qsi-dot.active{background:var(--gold);}
+.qsi-dot.done{background:var(--gold-dk);}
+.quiz-step-lbl{font-size:9px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted2);}
+.quiz-step-lbl span{color:var(--gold);}
+
+.quiz-question{
+  font-family:'Libre Baskerville',serif;font-style:italic;
+  font-size:clamp(18px,2.2vw,26px);color:var(--white);
+  line-height:1.5;margin-bottom:28px;
+  animation:fadeInQ .4s ease both;
+}
+@keyframes fadeInQ{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+.quiz-options{display:flex;flex-direction:column;gap:10px;}
+.quiz-opt{
+  background:rgba(212,212,212,.04);border:1px solid var(--border);
+  padding:16px 20px;display:flex;align-items:flex-start;gap:14px;
+  transition:all .25s;position:relative;overflow:hidden;
+}
+.quiz-opt::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold);transform:scaleY(0);transition:transform .25s;transform-origin:bottom;}
+.quiz-opt:hover{background:var(--gold-dim);border-color:var(--border-g);}
+.quiz-opt:hover::before{transform:scaleY(1);}
+.quiz-opt.selected{background:rgba(200,150,60,.15);border-color:var(--gold);}
+.quiz-opt.selected::before{transform:scaleY(1);}
+.qo-letter{width:26px;height:26px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Italiana',serif;font-size:16px;color:var(--gold);flex-shrink:0;}
+.quiz-opt.selected .qo-letter{background:var(--gold);color:var(--noir);}
+.qo-text{font-size:13.5px;font-weight:300;color:var(--pearl);line-height:1.6;}
+
+/* Result */
+.quiz-result{display:none;animation:fadeInQ .5s ease both;}
+.qr-profile{
+  background:var(--gold-dim);border:1px solid var(--border-g);
+  border-left:3px solid var(--gold);padding:28px 24px;
+  margin-bottom:24px;
+}
+.qrp-label{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.qrp-title{font-family:'Italiana',serif;font-size:clamp(24px,3vw,36px);color:var(--white);line-height:1.1;margin-bottom:10px;}
+.qrp-desc{font-size:13.5px;font-weight:300;color:var(--muted);line-height:1.75;}
+.qr-gaps{display:flex;flex-direction:column;gap:10px;margin-bottom:24px;}
+.qr-gap{display:flex;gap:12px;align-items:center;padding:12px 16px;background:rgba(212,212,212,.04);border:1px solid var(--border);}
+.qrg-ico{font-size:16px;flex-shrink:0;}
+.qrg-txt{font-size:13px;font-weight:300;color:var(--pearl);line-height:1.5;}
+/* Score bar */
+.qr-score{margin-bottom:24px;}
+.qrs-lbl{font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--muted2);margin-bottom:10px;display:flex;justify-content:space-between;}
+.qrs-bar{height:5px;background:rgba(212,212,212,.08);position:relative;}
+.qrs-fill{height:100%;background:linear-gradient(90deg,var(--gold-dk),var(--gold-lt));transition:width 1s ease;}
+.quiz-nav{display:flex;gap:10px;align-items:center;margin-top:6px;}
+.quiz-back{background:none;border:1px solid var(--border);color:var(--muted);padding:10px 18px;font-family:'Outfit',sans-serif;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;transition:all .2s;}
+.quiz-back:hover{border-color:var(--silver);color:var(--pearl);}
+.quiz-reset{background:none;border:none;color:var(--muted2);font-family:'Outfit',sans-serif;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:underline;padding:0;transition:color .2s;}
+.quiz-reset:hover{color:var(--pearl);}
+
+/* ── CURSO — O QUE VOCÊ VAI APRENDER ── */
+.sec-curso{background:var(--noir);}
+.curso-head{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:72px;}
+.modulos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+.mod-card{
+  background:var(--deep);padding:36px 30px;
+  position:relative;overflow:hidden;transition:background .35s;
+}
+.mod-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .35s;}
+.mod-card:hover{background:var(--carbon);}
+.mod-card:hover::after{opacity:1;}
+.mod-card.feat{background:var(--gold);cursor:pointer;}
+.mod-card.feat:hover{background:var(--gold-lt);}
+.mod-card.feat .mod-num,.mod-card.feat .mod-desc{color:rgba(10,10,10,.55);}
+.mod-card.feat .mod-title{color:var(--noir);}
+.mod-card.feat .mod-tag{background:rgba(10,10,10,.1);color:rgba(10,10,10,.6);}
+.mod-num{font-family:'Italiana',serif;font-size:11px;color:var(--muted2);margin-bottom:20px;letter-spacing:1px;}
+.mod-ico{font-size:30px;display:block;margin-bottom:14px;}
+.mod-title{font-family:'Italiana',serif;font-size:22px;color:var(--white);margin-bottom:10px;line-height:1.2;}
+.mod-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.8;margin-bottom:14px;}
+.mod-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.mod-tag{font-size:8px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;background:var(--gold-dim);color:var(--gold-lt);border:1px solid rgba(200,150,60,.2);}
+
+/* ── AUTORIDADE ── */
+.sec-auto{background:var(--carbon);padding:0;overflow:hidden;}
+.auto-wrap{display:grid;grid-template-columns:1fr 1fr;min-height:560px;}
+.auto-left{
+  padding:90px 80px;display:flex;flex-direction:column;justify-content:center;
+  background:var(--gold);position:relative;overflow:hidden;
+}
+.auto-left::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 80% 30%,rgba(255,255,255,.08) 0%,transparent 65%);}
+.auto-left::after{content:'DENDRY';font-family:'Italiana',serif;font-size:clamp(60px,12vw,140px);color:rgba(10,10,10,.06);position:absolute;left:50%;bottom:-20px;transform:translateX(-50%);white-space:nowrap;pointer-events:none;letter-spacing:4px;}
+.auto-left-c{position:relative;z-index:1;}
+.auto-left .s-eye{color:rgba(10,10,10,.4);}
+.auto-left .s-eye::before{background:rgba(10,10,10,.3);}
+.auto-left .s-h{color:var(--noir);}
+.auto-left .s-h em{color:rgba(10,10,10,.55);}
+.auto-left .s-p{color:rgba(10,10,10,.6);}
+.auto-right{padding:90px 80px;display:flex;flex-direction:column;justify-content:center;gap:0;}
+.auto-item{
+  display:flex;gap:20px;align-items:flex-start;padding:22px 0;
+  border-bottom:1px solid var(--border);transition:padding-left .25s;
+}
+.auto-item:hover{padding-left:8px;}
+.auto-item:last-child{border-bottom:none;}
+.ai-ico{font-size:22px;flex-shrink:0;margin-top:2px;}
+.ai-lbl{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+.ai-val{font-family:'Italiana',serif;font-size:20px;color:var(--white);margin-bottom:3px;}
+.ai-desc{font-size:12.5px;font-weight:300;color:var(--muted);line-height:1.65;}
+
+/* ── LIVRO ── */
+.sec-livro{background:var(--deep);}
+.livro-wrap{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:center;}
+.livro-visual{position:relative;}
+.livro-cover{
+  background:var(--carbon);border:1px solid var(--border-g);
+  aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:14px;
+  box-shadow:8px 8px 0 var(--gold-dk),-2px -2px 0 rgba(200,150,60,.1);
+  position:relative;overflow:hidden;
+  padding:30px;
+}
+.livro-cover::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 30%,rgba(200,150,60,.07) 0%,transparent 65%);}
+.lc-icon{font-size:52px;opacity:.25;position:relative;z-index:1;}
+.lc-title{font-family:'Italiana',serif;font-size:clamp(18px,2.2vw,24px);color:var(--white);line-height:1.3;text-align:center;position:relative;z-index:1;}
+.lc-author{font-size:9.5px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-top:6px;position:relative;z-index:1;}
+.lc-spine{
+  position:absolute;right:-22px;top:0;bottom:0;width:22px;
+  background:var(--gold-dk);display:flex;align-items:center;justify-content:center;
+}
+.lc-spine-txt{font-family:'Italiana',serif;font-size:11px;color:rgba(10,10,10,.6);writing-mode:vertical-rl;letter-spacing:2px;}
+.livro-content{}
+.livro-quote{
+  font-family:'Libre Baskerville',serif;font-style:italic;
+  font-size:clamp(18px,2.4vw,28px);line-height:1.6;color:var(--white);
+  padding-left:22px;border-left:2px solid var(--gold);
+  margin-bottom:28px;
+}
+.livro-desc{font-size:14.5px;font-weight:300;line-height:1.9;color:var(--muted);margin-bottom:32px;}
+.livro-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
+.livro-tag{font-size:8.5px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;background:var(--gold-dim);color:var(--gold-lt);border:1px solid rgba(200,150,60,.2);}
+
+/* ── PARA QUEM É ── */
+.sec-paraquem{background:var(--noir);}
+.pq-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;margin-bottom:56px;}
+.pq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+.pq-card{
+  background:var(--deep);padding:36px 28px;
+  position:relative;overflow:hidden;transition:background .35s;
+}
+.pq-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .4s;}
+.pq-card:hover{background:var(--carbon);}
+.pq-card:hover::before{opacity:1;}
+.pq-ico{font-size:32px;display:block;margin-bottom:16px;}
+.pq-title{font-family:'Italiana',serif;font-size:22px;color:var(--white);margin-bottom:10px;}
+.pq-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.8;}
+.pq-check{margin-top:14px;display:flex;flex-direction:column;gap:6px;}
+.pq-check-item{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;font-weight:300;color:var(--muted);}
+.pq-check-item::before{content:'✦';color:var(--gold);font-size:9px;margin-top:4px;flex-shrink:0;}
+
+/* ── DEPOIMENTOS ── */
+.sec-dep{background:var(--carbon);}
+.dep-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:56px;}
+.dep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+.dep-card{background:var(--deep);padding:32px 26px;position:relative;overflow:hidden;transition:background .3s;}
+.dep-card::before{content:'"';font-family:'Italiana',serif;font-size:96px;color:rgba(200,150,60,.06);position:absolute;top:-5px;left:10px;line-height:1;pointer-events:none;}
+.dep-card:hover{background:var(--gold-dim);}
+.dep-stars{color:var(--gold);font-size:11px;letter-spacing:3px;margin-bottom:14px;}
+.dep-text{font-family:'Libre Baskerville',serif;font-style:italic;font-size:15.5px;font-weight:400;line-height:1.75;color:var(--pearl);margin-bottom:20px;position:relative;z-index:1;}
+.dep-author{display:flex;gap:12px;align-items:center;padding-top:16px;border-top:1px solid var(--border);}
+.dep-init{width:38px;height:38px;background:var(--gold-dim);border:1px solid var(--border-g);display:flex;align-items:center;justify-content:center;font-family:'Italiana',serif;font-size:18px;color:var(--gold);flex-shrink:0;}
+.dep-name{font-family:'Italiana',serif;font-size:18px;color:var(--white);}
+.dep-role{font-size:9.5px;font-weight:300;color:var(--muted2);margin-top:2px;}
+
+/* ── INVESTIMENTO ── */
+.sec-invest{background:var(--deep);padding:0;overflow:hidden;}
+.invest-wrap{display:grid;grid-template-columns:1fr 1fr;min-height:580px;}
+.inv-left{
+  padding:90px 80px;display:flex;flex-direction:column;justify-content:center;
+  border-right:1px solid var(--border);position:relative;overflow:hidden;
+}
+.inv-left::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 45% at 15% 50%,rgba(200,150,60,.06) 0%,transparent 65%);}
+.inv-left-c{position:relative;z-index:1;}
+.inv-price-box{
+  background:var(--gold-dim);border:1px solid var(--border-g);
+  border-left:3px solid var(--gold);padding:28px 24px;margin-top:28px;
+}
+.ipb-label{font-size:9px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.ipb-old{font-size:13px;font-weight:300;color:var(--muted2);text-decoration:line-through;margin-bottom:4px;}
+.ipb-price{font-family:'Italiana',serif;font-size:clamp(44px,6vw,72px);color:var(--white);line-height:1;}
+.ipb-price sup{font-size:22px;vertical-align:top;margin-top:12px;}
+.ipb-note{font-size:11.5px;font-weight:300;color:var(--muted);margin-top:8px;line-height:1.6;}
+.inv-guarantee{
+  margin-top:18px;display:flex;gap:12px;align-items:flex-start;
+  background:rgba(212,212,212,.04);border:1px solid var(--border);padding:16px;
+}
+.ig-ico{font-size:22px;flex-shrink:0;}
+.ig-txt{font-size:12px;font-weight:300;color:var(--muted);line-height:1.65;}
+.ig-txt strong{color:var(--white);font-weight:500;}
+
+.inv-right{padding:90px 80px;display:flex;flex-direction:column;justify-content:center;}
+.incluso-list{display:flex;flex-direction:column;gap:0;margin-bottom:32px;}
+.incl-item{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--border);transition:padding-left .25s;}
+.incl-item:hover{padding-left:6px;}
+.incl-item:last-child{border-bottom:none;}
+.incl-ico{font-size:18px;flex-shrink:0;margin-top:2px;}
+.incl-title{font-family:'Italiana',serif;font-size:18px;color:var(--white);margin-bottom:3px;}
+.incl-desc{font-size:12px;font-weight:300;color:var(--muted);line-height:1.65;}
+.inv-cta-btns{display:flex;gap:10px;flex-wrap:wrap;}
+
+/* ── FAQ ── */
+.sec-faq{background:var(--noir);}
+.faq-layout{display:grid;grid-template-columns:1fr 2fr;gap:80px;}
+.faq-items{display:flex;flex-direction:column;}
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-q{width:100%;background:none;border:none;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0;text-align:left;font-family:'Libre Baskerville',serif;font-style:italic;font-size:17px;color:var(--pearl);transition:color .2s;}
+.faq-q:hover{color:var(--white);}
+.faq-icon{width:28px;height:28px;flex-shrink:0;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--gold);transition:transform .3s,background .3s;font-style:normal;}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--gold);color:var(--noir);}
+.faq-a{max-height:0;overflow:hidden;font-size:13.5px;font-weight:300;line-height:1.85;color:var(--muted);transition:max-height .4s ease,padding .4s;}
+.faq-item.open .faq-a{max-height:220px;padding-bottom:18px;}
+
+/* ── CTA FINAL ── */
+.sec-cta{
+  background:var(--carbon);padding:120px 80px;text-align:center;
+  position:relative;overflow:hidden;z-index:1;
+}
+.sec-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(200,150,60,.06) 0%,transparent 65%);}
+.sec-cta::after{content:'LIDERANÇA';font-family:'Italiana',serif;font-size:clamp(80px,14vw,200px);color:rgba(200,150,60,.03);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;letter-spacing:8px;}
+.sec-cta>*{position:relative;z-index:1;}
+.sec-cta .s-eye{justify-content:center;}
+.sec-cta .s-p{text-align:center;margin:0 auto 44px;}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+/* FOOTER */
+footer{background:var(--noir);padding:44px 80px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);position:relative;z-index:1;}
+.fl{display:flex;flex-direction:column;}
+.fl-name{font-family:'Italiana',serif;font-size:20px;color:rgba(212,212,212,.35);letter-spacing:2px;}
+.fl-sub{font-size:7.5px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:rgba(212,212,212,.15);margin-top:3px;}
+.fl-copy{font-size:11px;color:rgba(212,212,212,.18);text-align:center;line-height:1.7;}
+.fl-nav{display:flex;flex-direction:column;align-items:flex-end;gap:7px;}
+.fl-nav a{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(212,212,212,.18);text-decoration:none;transition:color .2s;}
+.fl-nav a:hover{color:rgba(212,212,212,.55);}
+
+.wa-float{position:fixed;bottom:30px;right:30px;z-index:400;width:50px;height:50px;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:22px;text-decoration:none;box-shadow:0 6px 24px rgba(37,211,102,.35);transition:all .25s;}
+.wa-float:hover{transform:scale(1.1) translateY(-2px);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.v{opacity:1;transform:translateY(0);}
+.r1{transition-delay:.05s}.r2{transition-delay:.12s}.r3{transition-delay:.19s}.r4{transition-delay:.26s}.r5{transition-delay:.33s}.r6{transition-delay:.4s}
+
+@media(max-width:1100px){
+  nav{padding:0 26px;}
+  .nav-links,.nav-cta{display:none;}
+  .hamburger{display:flex;}
+  section,div.sec{padding:72px 26px;}
+  .hero{grid-template-columns:1fr;}
+  .hero-left{padding:120px 26px 60px;}
+  .hero-right{min-height:400px;}
+  .diag-wrap,.auto-wrap,.invest-wrap{grid-template-columns:1fr;}
+  .diag-intro,.diag-quiz,.auto-left,.auto-right,.inv-left,.inv-right{padding:64px 26px;}
+  .curso-head{grid-template-columns:1fr;gap:24px;}
+  .modulos-grid,.pq-grid,.dep-grid{grid-template-columns:1fr 1fr;}
+  .faq-layout{grid-template-columns:1fr;gap:36px;}
+  .livro-wrap{grid-template-columns:1fr;gap:40px;}
+  .livro-visual{max-width:240px;}
+  .sec-cta{padding:80px 26px;}
+  footer{flex-direction:column;gap:20px;text-align:center;padding:32px 26px;}
+  .fl-nav{align-items:center;flex-direction:row;flex-wrap:wrap;justify-content:center;}
+}
+@media(max-width:640px){
+  nav{padding:0 18px;}
+  section,div.sec{padding:56px 18px;}
+  .modulos-grid,.pq-grid,.dep-grid{grid-template-columns:1fr;}
+  .hero-btns,.cta-btns{flex-direction:column;align-items:flex-start;}
+  .cta-btns{align-items:center;}
+  .inv-cta-btns{flex-direction:column;}
+  footer{padding:28px 18px;}
+  .wa-float{bottom:18px;right:18px;}
+}
+</style>
+</head>
+<body>
+
+<div id="pen">🖊️</div>
+<div id="pen-dot"></div>
+
+<a href="https://wa.me/5500000000000" target="_blank" class="wa-float">💬</a>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mob">
+  <button class="mob-close" onclick="closeMob()">✕</button>
+  <a href="#diagnostico" onclick="closeMob()">Diagnóstico</a>
+  <a href="#curso" onclick="closeMob()">O Curso</a>
+  <a href="#sobre" onclick="closeMob()">Dendry Rios</a>
+  <a href="#para-quem" onclick="closeMob()">Para quem é</a>
+  <a href="#investimento" onclick="closeMob()">Investimento</a>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#top" class="nav-logo">
+    <span class="nav-logo-name">Dendry Rios</span>
+    <span class="nav-logo-tag">Gestão · RH · Comunicação Estratégica</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#diagnostico">Diagnóstico</a></li>
+    <li><a href="#curso">O Curso</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#para-quem">Para quem</a></li>
+    <li><a href="#investimento">Investimento</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <a href="#investimento" class="nav-cta">Quero me inscrever</a>
+    <button class="hamburger" onclick="openMob()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<div class="hero" id="top">
+  <div class="hero-left">
+    <div class="h-eyebrow"><div class="heb-line"></div><div class="heb-txt">Novo curso · Dendry Rios</div></div>
+    <h1 class="hero-h1">
+      Comunicação
+      <em>Estratégica</em>
+      para Líderes
+    </h1>
+    <p class="hero-kicker">Como influenciar decisões, construir autoridade<br>e liderar com presença em qualquer ambiente.</p>
+    <p class="hero-p">
+      Quem não sabe <strong>comunicar com estratégia</strong> perde espaço para quem comunica — mesmo sendo mais competente. Este curso muda isso. Com metodologia desenvolvida por quem assessorou <strong>autarquias federais, secretarias de governo e empresários</strong> de Mato Grosso do Sul.
+    </p>
+    <div class="hero-btns">
+      <a href="#diagnostico" class="btn-gold">Fazer meu diagnóstico →</a>
+      <a href="#curso" class="btn-ghost">Ver o programa</a>
+    </div>
+    <div class="cred-strip">
+      <div class="cs-item"><div class="cs-ico">🏛️</div><div class="cs-val">Federal</div><div class="cs-lbl">Exp. autarquias</div></div>
+      <div class="cs-item"><div class="cs-ico">📊</div><div class="cs-val">RH & Gestão</div><div class="cs-lbl">Especialista</div></div>
+      <div class="cs-item"><div class="cs-ico">📖</div><div class="cs-val">Autor</div><div class="cs-lbl">Livro publicado</div></div>
+      <div class="cs-item"><div class="cs-ico">🎓</div><div class="cs-val">Mestre</div><div class="cs-lbl">Mestrando Direito</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-wm">DR</div>
+    <div class="photo-frame">
+      <div class="photo-glass">
+        <div class="ph-inner">
+          <span class="ph-emoji">👨‍💼</span>
+          <span class="ph-lbl">Foto de Dendry Rios</span>
+        </div>
+        <div class="ph-name">
+          <div class="ph-name-txt">Dendry Rios</div>
+          <div class="ph-name-role">Especialista · Gestor · Autor</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right-stats">
+      <div class="hrs"><div class="hrs-val">10,7k</div><div class="hrs-lbl">Seguidores</div></div>
+      <div class="hrs"><div class="hrs-val">🏛️</div><div class="hrs-lbl">Autarquias federais</div></div>
+      <div class="hrs"><div class="hrs-val">📖</div><div class="hrs-lbl">Livro publicado</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <div class="t-item">Comunicação Estratégica <span class="t-sep">✦</span></div>
+    <div class="t-item">Gestão de RH <span class="t-sep">✦</span></div>
+    <div class="t-item">Liderança com Presença <span class="t-sep">✦</span></div>
+    <div class="t-item">Assessoria de Comunicação <span class="t-sep">✦</span></div>
+    <div class="t-item">Gestão Pública e Privada <span class="t-sep">✦</span></div>
+    <div class="t-item">Autoridade Profissional <span class="t-sep">✦</span></div>
+    <div class="t-item">Influência e Negociação <span class="t-sep">✦</span></div>
+    <div class="t-item">Mestrando em Direito <span class="t-sep">✦</span></div>
+    <div class="t-item">Comunicação Estratégica <span class="t-sep">✦</span></div>
+    <div class="t-item">Gestão de RH <span class="t-sep">✦</span></div>
+    <div class="t-item">Liderança com Presença <span class="t-sep">✦</span></div>
+    <div class="t-item">Assessoria de Comunicação <span class="t-sep">✦</span></div>
+    <div class="t-item">Gestão Pública e Privada <span class="t-sep">✦</span></div>
+    <div class="t-item">Autoridade Profissional <span class="t-sep">✦</span></div>
+    <div class="t-item">Influência e Negociação <span class="t-sep">✦</span></div>
+    <div class="t-item">Mestrando em Direito <span class="t-sep">✦</span></div>
+  </div>
+</div>
+
+<!-- ══ DIAGNÓSTICO INTERATIVO ══ -->
+<div class="sec-diag reveal" id="diagnostico">
+  <div class="diag-wrap">
+    <div class="diag-intro">
+      <div class="di-c">
+        <div class="s-eye">Diagnóstico gratuito</div>
+        <h2 class="s-h">Qual é o seu<br>perfil de<br><em>comunicador?</em></h2>
+        <p class="s-p" style="margin-bottom:28px;">5 perguntas. 2 minutos. Um mapa claro de onde você está e para onde precisa ir como líder comunicador.</p>
+        <div style="background:var(--gold-dim);border:1px solid var(--border-g);border-left:2px solid var(--gold);padding:20px 18px;">
+          <div style="font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Os 3 perfis possíveis</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;gap:10px;align-items:center;"><div style="width:8px;height:8px;background:var(--silver);border-radius:50%;flex-shrink:0;"></div><div style="font-size:12.5px;font-weight:300;color:var(--muted);">🔵 <strong style="color:var(--pearl);">Comunicador Reativo</strong> — Responde, não conduz</div></div>
+            <div style="display:flex;gap:10px;align-items:center;"><div style="width:8px;height:8px;background:var(--gold-dk);border-radius:50%;flex-shrink:0;"></div><div style="font-size:12.5px;font-weight:300;color:var(--muted);">🟡 <strong style="color:var(--pearl);">Comunicador Estratégico</strong> — Planeja, mas falta presença</div></div>
+            <div style="display:flex;gap:10px;align-items:center;"><div style="width:8px;height:8px;background:var(--gold-lt);border-radius:50%;flex-shrink:0;"></div><div style="font-size:12.5px;font-weight:300;color:var(--muted);">⭐ <strong style="color:var(--pearl);">Autoridade Comunicacional</strong> — Influencia e é seguido</div></div>
+          </div>
+        </div>
+        <div style="margin-top:28px;display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="font-size:9px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;background:var(--gold-dim);color:var(--gold-lt);border:1px solid rgba(200,150,60,.2);">5 perguntas</span>
+          <span style="font-size:9px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;background:var(--gold-dim);color:var(--gold-lt);border:1px solid rgba(200,150,60,.2);">2 minutos</span>
+          <span style="font-size:9px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;background:var(--gold-dim);color:var(--gold-lt);border:1px solid rgba(200,150,60,.2);">Resultado imediato</span>
+        </div>
+      </div>
+    </div>
+    <div class="diag-quiz">
+      <div class="dq-c">
+        <!-- QUIZ UI -->
+        <div id="quizPanel">
+          <div class="quiz-header">
+            <div class="quiz-step-indicator" id="stepDots">
+              <div class="qsi-dot active"></div>
+              <div class="qsi-dot"></div>
+              <div class="qsi-dot"></div>
+              <div class="qsi-dot"></div>
+              <div class="qsi-dot"></div>
+            </div>
+            <div class="quiz-step-lbl">Pergunta <span id="stepNum">1</span> de 5</div>
+          </div>
+          <div class="quiz-question" id="quizQ"></div>
+          <div class="quiz-options" id="quizOpts"></div>
+          <div class="quiz-nav" style="margin-top:20px;">
+            <button class="quiz-back" onclick="quizBack()" id="backBtn" style="display:none;">← Voltar</button>
+          </div>
+        </div>
+        <!-- RESULT -->
+        <div class="quiz-result" id="quizResult">
+          <div class="qr-profile" id="qrProfile">
+            <div class="qrp-label" id="qrLabel"></div>
+            <div class="qrp-title" id="qrTitle"></div>
+            <div class="qrp-desc" id="qrDesc"></div>
+          </div>
+          <div class="qr-score">
+            <div class="qrs-lbl"><span>Potencial de desenvolvimento</span><span id="qrPct"></span></div>
+            <div class="qrs-bar"><div class="qrs-fill" id="qrFill" style="width:0%"></div></div>
+          </div>
+          <div class="qr-gaps" id="qrGaps"></div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
+            <a href="#investimento" class="btn-gold" style="flex:1;justify-content:center;">Quero evoluir meu perfil →</a>
+          </div>
+          <button class="quiz-reset" onclick="resetQuiz()">↺ Refazer diagnóstico</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ O CURSO ══ -->
+<section class="sec-curso reveal" id="curso">
+  <div class="curso-head">
+    <div>
+      <div class="s-eye">Programa do curso</div>
+      <h2 class="s-h">O que você vai<br><em>dominar.</em></h2>
+    </div>
+    <div>
+      <p class="s-p">Seis módulos desenvolvidos a partir de anos de experiência real em comunicação institucional, RH e liderança — nos setores público e privado.</p>
+      <div style="margin-top:24px;"><a href="#investimento" class="btn-outline-gold">Ver todas as vagas →</a></div>
+    </div>
+  </div>
+  <div class="modulos-grid">
+    <div class="mod-card feat reveal r1">
+      <div class="mod-num">Módulo 01</div>
+      <span class="mod-ico">🎯</span>
+      <div class="mod-title">Fundamentos da Autoridade Comunicacional</div>
+      <p class="mod-desc" style="color:rgba(10,10,10,.55);">Como construir presença e credibilidade antes mesmo de abrir a boca. O que separa um comunicador reativo de um estratégico.</p>
+      <div class="mod-tags"><span class="mod-tag" style="background:rgba(10,10,10,.1);color:rgba(10,10,10,.6);">Autoridade</span><span class="mod-tag" style="background:rgba(10,10,10,.1);color:rgba(10,10,10,.6);">Presença</span></div>
+    </div>
+    <div class="mod-card reveal r2">
+      <div class="mod-num">Módulo 02</div>
+      <span class="mod-ico">🏛️</span>
+      <div class="mod-title">Comunicação no Setor Público</div>
+      <p class="mod-desc">Como falar com gestores, colegiados e autarquias. Linguagem institucional, protocolos e a arte de influenciar sem cargo formal.</p>
+      <div class="mod-tags"><span class="mod-tag">Gestão pública</span><span class="mod-tag">Institucional</span></div>
+    </div>
+    <div class="mod-card reveal r3">
+      <div class="mod-num">Módulo 03</div>
+      <span class="mod-ico">💼</span>
+      <div class="mod-title">Liderança e RH na Prática</div>
+      <p class="mod-desc">Feedback, conversas difíceis, engajamento de equipes e como o RH estratégico usa comunicação para reter e desenvolver talentos.</p>
+      <div class="mod-tags"><span class="mod-tag">RH</span><span class="mod-tag">Liderança</span><span class="mod-tag">Equipes</span></div>
+    </div>
+    <div class="mod-card reveal r1">
+      <div class="mod-num">Módulo 04</div>
+      <span class="mod-ico">🤝</span>
+      <div class="mod-title">Negociação e Influência</div>
+      <p class="mod-desc">Técnicas de negociação baseadas em interesse, não em posição. Como apresentar ideias para que sejam aprovadas — em reuniões, propostas e pitches.</p>
+      <div class="mod-tags"><span class="mod-tag">Negociação</span><span class="mod-tag">Influência</span></div>
+    </div>
+    <div class="mod-card reveal r2">
+      <div class="mod-num">Módulo 05</div>
+      <span class="mod-ico">📣</span>
+      <div class="mod-title">Comunicação Digital e Pessoal</div>
+      <p class="mod-desc">Como construir autoridade online, posicionar sua marca pessoal e usar redes sociais como extensão da sua liderança — não como distração.</p>
+      <div class="mod-tags"><span class="mod-tag">Marca pessoal</span><span class="mod-tag">Digital</span></div>
+    </div>
+    <div class="mod-card reveal r3">
+      <div class="mod-num">Módulo 06</div>
+      <span class="mod-ico">⭐</span>
+      <div class="mod-title">Pequenas Atitudes, Grandes Resultados</div>
+      <p class="mod-desc">Baseado no livro de Dendry Rios — como transformar hábitos comunicacionais diários em resultados extraordinários ao longo do tempo.</p>
+      <div class="mod-tags"><span class="mod-tag">Livro</span><span class="mod-tag">Resultados</span><span class="mod-tag">Hábitos</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ AUTORIDADE ══ -->
+<div class="sec-auto reveal" id="sobre">
+  <div class="auto-wrap">
+    <div class="auto-left">
+      <div class="auto-left-c">
+        <div class="s-eye">Dendry Rios</div>
+        <h2 class="s-h">Experiência real.<br><em>Resultados</em> comprovados.</h2>
+        <p class="s-p">Não é teoria de sala de aula. É metodologia forjada no campo — em assessorias reais, crises institucionais e ambientes de alta pressão decisória.</p>
+        <div style="margin-top:36px;"><a href="#curso" class="btn-ghost" style="border-color:rgba(10,10,10,.2);color:var(--noir);">Ver o programa completo →</a></div>
+      </div>
+    </div>
+    <div class="auto-right">
+      <div class="auto-item reveal r1"><div class="ai-ico">🏛️</div><div><div class="ai-lbl">Setor público</div><div class="ai-val">Autarquias Federais — MS</div><div class="ai-desc">Assessor de comunicação em múltiplas autarquias federais em Mato Grosso do Sul. Experiência em gestão de imagem institucional, crise e relacionamento com órgãos de controle.</div></div></div>
+      <div class="auto-item reveal r2"><div class="ai-ico">💼</div><div><div class="ai-lbl">Setor privado</div><div class="ai-val">Empresários e Iniciativa Privada</div><div class="ai-desc">Assessorou empresários de diferentes setores em comunicação estratégica, posicionamento de marca, gestão de equipes e RH. Da pequena empresa ao médio empresário.</div></div></div>
+      <div class="auto-item reveal r3"><div class="ai-ico">📊</div><div><div class="ai-lbl">Especialidade</div><div class="ai-val">Gestão & Recursos Humanos</div><div class="ai-desc">Especialista em RH com foco em liderança, cultura organizacional e comunicação interna. Como o RH estratégico transforma a dinâmica de equipes inteiras.</div></div></div>
+      <div class="auto-item reveal r4"><div class="ai-ico">⚖️</div><div><div class="ai-lbl">Formação acadêmica</div><div class="ai-val">Acadêmico de Direito · Mestrando</div><div class="ai-desc">Base jurídica que amplia a capacidade de analisar relações institucionais, contratos, compliance e comunicação em ambientes regulados.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ LIVRO ══ -->
+<section class="sec-livro reveal">
+  <div class="livro-wrap">
+    <div class="livro-visual">
+      <div class="livro-cover">
+        <span class="lc-icon">📖</span>
+        <div class="lc-title">"A Arte de Transformar<br>Pequenas Atitudes em<br>Grandes Resultados"</div>
+        <div class="lc-author">Dendry Rios</div>
+        <div class="lc-spine"><span class="lc-spine-txt">DENDRY RIOS</span></div>
+      </div>
+    </div>
+    <div class="livro-content">
+      <div class="s-eye">O livro</div>
+      <h2 class="s-h" style="margin-bottom:20px;">A base filosófica<br>do <em>curso.</em></h2>
+      <div class="livro-quote">"Não são as grandes rupturas que mudam uma carreira — são as pequenas atitudes diárias que, acumuladas, produzem resultados extraordinários."</div>
+      <p class="livro-desc">O livro publicado por Dendry Rios é a espinha dorsal da metodologia do curso. Cada módulo conecta conceitos práticos do livro com exercícios aplicáveis no dia a dia do líder — no setor público, privado ou no empreendedorismo.</p>
+      <div class="livro-tags">
+        <span class="livro-tag">Liderança</span>
+        <span class="livro-tag">Comunicação</span>
+        <span class="livro-tag">Gestão</span>
+        <span class="livro-tag">Resultados</span>
+        <span class="livro-tag">Atitudes</span>
+      </div>
+      <a href="#investimento" class="btn-gold">Quero o curso + o livro →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PARA QUEM É ══ -->
+<section class="sec-paraquem reveal" id="para-quem">
+  <div class="pq-head">
+    <div>
+      <div class="s-eye">Para quem é</div>
+      <h2 class="s-h">Este curso foi<br>feito para <em>você?</em></h2>
+    </div>
+    <p class="s-p" style="max-width:380px;">Se você se reconhece em pelo menos um desses perfis, a resposta é sim.</p>
+  </div>
+  <div class="pq-grid">
+    <div class="pq-card reveal r1">
+      <span class="pq-ico">🏛️</span>
+      <div class="pq-title">Servidor e Gestor Público</div>
+      <p class="pq-desc">Você tem competência técnica mas sente que não consegue influenciar decisões, apresentar projetos com impacto ou construir autoridade no ambiente institucional.</p>
+      <div class="pq-check">
+        <div class="pq-check-item">Quer aprender a se comunicar em colegiados</div>
+        <div class="pq-check-item">Precisa lidar com crises de imagem institucional</div>
+        <div class="pq-check-item">Quer crescer na carreira pública com autoridade</div>
+      </div>
+    </div>
+    <div class="pq-card reveal r2">
+      <span class="pq-ico">💼</span>
+      <div class="pq-title">Empresário e Executivo</div>
+      <p class="pq-desc">Você lidera uma empresa ou equipe e sabe que a forma como você se comunica afeta diretamente os resultados, a cultura organizacional e o engajamento das pessoas.</p>
+      <div class="pq-check">
+        <div class="pq-check-item">Quer comunicar com mais clareza e influência</div>
+        <div class="pq-check-item">Precisa ter conversas difíceis com eficiência</div>
+        <div class="pq-check-item">Quer construir marca pessoal sólida</div>
+      </div>
+    </div>
+    <div class="pq-card reveal r3">
+      <span class="pq-ico">🚀</span>
+      <div class="pq-title">Profissional em Ascensão</div>
+      <p class="pq-desc">Você está crescendo na carreira e percebe que as soft skills — especialmente comunicação e liderança — são o verdadeiro diferencial para chegar onde quer chegar.</p>
+      <div class="pq-check">
+        <div class="pq-check-item">Quer ser reconhecido como referência na área</div>
+        <div class="pq-check-item">Precisa apresentar ideias com mais impacto</div>
+        <div class="pq-check-item">Quer dominar negociação e influência</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DEPOIMENTOS ══ -->
+<section class="sec-dep reveal">
+  <div class="dep-head">
+    <div>
+      <div class="s-eye">Quem já passou por aqui</div>
+      <h2 class="s-h">Líderes que<br><em>evoluíram.</em></h2>
+    </div>
+    <a href="https://instagram.com/dendryrios" target="_blank" class="btn-txt">Ver no Instagram →</a>
+  </div>
+  <div class="dep-grid">
+    <div class="dep-card reveal r1">
+      <div class="dep-stars">★★★★★</div>
+      <p class="dep-text">"A mentoria com o Dendry foi transformadora. Em 3 meses consegui apresentar um projeto para a gestão da autarquia que havia tentado por dois anos sem sucesso. A metodologia de comunicação estratégica é real."</p>
+      <div class="dep-author"><div class="dep-init">C</div><div><div class="dep-name">Carlos M.</div><div class="dep-role">Gestor Público · Autarquia Federal</div></div></div>
+    </div>
+    <div class="dep-card reveal r2">
+      <div class="dep-stars">★★★★★</div>
+      <p class="dep-text">"Fui empresária por 8 anos sem entender por que minhas ideias não "pegavam" nas reuniões com sócios. Após trabalhar com o Dendry, aprendi que o problema não era a ideia — era como eu a comunicava."</p>
+      <div class="dep-author"><div class="dep-init">A</div><div><div class="dep-name">Ana Paula R.</div><div class="dep-role">Empresária · Setor de Serviços</div></div></div>
+    </div>
+    <div class="dep-card reveal r3">
+      <div class="dep-stars">★★★★★</div>
+      <p class="dep-text">"O livro do Dendry foi o gatilho. O curso foi a transformação. Hoje lidero uma equipe de 40 pessoas com muito mais clareza, confiança e autoridade. Os resultados foram mensuráveis nos primeiros 60 dias."</p>
+      <div class="dep-author"><div class="dep-init">R</div><div><div class="dep-name">Ricardo L.</div><div class="dep-role">Gerente de RH · Empresa Privada</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INVESTIMENTO ══ -->
+<div class="sec-invest reveal" id="investimento">
+  <div class="invest-wrap">
+    <div class="inv-left">
+      <div class="inv-left-c">
+        <div class="s-eye">Investimento</div>
+        <h2 class="s-h">Comunicação que<br><em>retorna.</em></h2>
+        <p class="s-p">Uma única negociação bem conduzida, uma promoção conquistada pela autoridade construída — o retorno do investimento acontece no primeiro mês.</p>
+        <div class="inv-price-box">
+          <div class="ipb-label">Valor do curso completo</div>
+          <div class="ipb-old">De R$ 997,00</div>
+          <div class="ipb-price"><sup>R$</sup> 497</div>
+          <div class="ipb-note">ou 12x de R$ 46,90 · Acesso vitalício · Certificado incluído</div>
+        </div>
+        <div class="inv-guarantee">
+          <div class="ig-ico">🛡️</div>
+          <div class="ig-txt"><strong>Garantia de 7 dias</strong> — Se nos primeiros 7 dias você sentir que o curso não é para você, devolvemos 100% do valor sem perguntas.</div>
+        </div>
+      </div>
+    </div>
+    <div class="inv-right">
+      <div class="s-eye" style="margin-bottom:28px;">O que está incluído</div>
+      <div class="incluso-list">
+        <div class="incl-item"><div class="incl-ico">🎓</div><div><div class="incl-title">6 módulos completos em vídeo</div><div class="incl-desc">Mais de 12h de conteúdo prático, com exercícios e estudos de caso reais dos setores público e privado.</div></div></div>
+        <div class="incl-item"><div class="incl-ico">📖</div><div><div class="incl-title">Material complementar do livro</div><div class="incl-desc">Conexão direta entre o conteúdo do curso e os conceitos do livro "A Arte de Transformar..."</div></div></div>
+        <div class="incl-item"><div class="incl-ico">🎯</div><div><div class="incl-title">Diagnóstico personalizado</div><div class="incl-desc">Seu perfil de comunicador mapeado e um plano de desenvolvimento específico para o seu caso.</div></div></div>
+        <div class="incl-item"><div class="incl-ico">👥</div><div><div class="incl-title">Comunidade exclusiva de alunos</div><div class="incl-desc">Grupo fechado com Dendry Rios e outros alunos para networking, dúvidas e casos práticos.</div></div></div>
+        <div class="incl-item"><div class="incl-ico">📜</div><div><div class="incl-title">Certificado de conclusão</div><div class="incl-desc">Certificado digital reconhecido para portfólio e LinkedIn.</div></div></div>
+      </div>
+      <div class="inv-cta-btns">
+        <a href="#" class="btn-gold" style="flex:1;justify-content:center;">Quero me inscrever agora →</a>
+        <a href="https://wa.me/5500000000000" target="_blank" class="btn-wa">💬 Falar com Dendry</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FAQ ══ -->
+<section class="sec-faq reveal">
+  <div class="faq-layout">
+    <div>
+      <div class="s-eye">Dúvidas</div>
+      <h2 class="s-h">Perguntas<br>frequentes.</h2>
+      <div style="margin-top:32px;"><a href="https://wa.me/5500000000000" target="_blank" class="btn-outline-gold">Falar com Dendry →</a></div>
+    </div>
+    <div class="faq-items">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">O curso é ao vivo ou gravado? <span class="faq-icon">+</span></button><div class="faq-a">O curso é gravado e você tem acesso vitalício. Assista no seu ritmo, quantas vezes quiser. Para quem deseja acompanhamento ao vivo, oferecemos a modalidade de mentoria individual com Dendry Rios.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Serve para quem está no setor público? <span class="faq-icon">+</span></button><div class="faq-a">É especialmente pensado para isso. A experiência de Dendry como assessor de comunicação em autarquias federais em MS garante que o conteúdo do setor público é profundo, prático e aplicável — não genérico.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">E para quem está no setor privado? <span class="faq-icon">+</span></button><div class="faq-a">Também. O curso foi desenvolvido a partir das duas experiências. Empresários, executivos e profissionais em ascensão encontrarão aplicação direta nos módulos de liderança, RH, negociação e marca pessoal.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Preciso ter experiência em gestão? <span class="faq-icon">+</span></button><div class="faq-a">Não. O curso atende desde quem está começando a liderar até gestores experientes que querem refinar sua comunicação estratégica. O diagnóstico inicial mapeia exatamente onde você está.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Como funciona a garantia? <span class="faq-icon">+</span></button><div class="faq-a">Você tem 7 dias após a inscrição para pedir reembolso completo, sem nenhuma pergunta ou burocracia. Queremos que você entre com confiança e saia com resultado.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Tem certificado reconhecido? <span class="faq-icon">+</span></button><div class="faq-a">Sim. O certificado digital é emitido ao final do curso e pode ser adicionado ao LinkedIn, currículo e portfólio profissional.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA FINAL ══ -->
+<section class="sec-cta reveal">
+  <div class="s-eye">Próximo passo</div>
+  <h2 class="s-h">Sua comunicação é<br>seu maior <em>ativo.</em></h2>
+  <p class="s-p">Quem se comunica bem lidera mais, negocia melhor e é reconhecido — independente do cargo. Comece agora.</p>
+  <div class="cta-btns">
+    <a href="#investimento" class="btn-gold">Quero me inscrever →</a>
+    <a href="#diagnostico" class="btn-ghost">Fazer o diagnóstico gratuito</a>
+    <a href="https://wa.me/5500000000000" target="_blank" class="btn-wa">💬 WhatsApp</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fl">
+    <div class="fl-name">Dendry Rios</div>
+    <div class="fl-sub">Gestão · RH · Comunicação Estratégica · Palestrante · Autor</div>
+  </div>
+  <div class="fl-copy">© 2026 Dendry Rios.<br>Comunicação Estratégica para Líderes.</div>
+  <nav class="fl-nav">
+    <a href="#diagnostico">Diagnóstico</a>
+    <a href="#curso">Curso</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#investimento">Investimento</a>
+    <a href="https://instagram.com/dendryrios" target="_blank">Instagram</a>
+  </nav>
+</footer>
+
+<script>
+/* ── PEN CURSOR ── */
+const pen=document.getElementById('pen'),dot=document.getElementById('pen-dot');
+let mx=0,my=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  pen.style.left=mx+'px';pen.style.top=my+'px';
+  dot.style.left=mx+'px';dot.style.top=my+'px';
+});
+document.querySelectorAll('a,button,.quiz-opt,.mod-card,.pq-card,.dep-card,.auto-item,.incl-item').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{pen.style.transform='translate(-2px,-18px) rotate(-20deg) scale(1.25)';dot.style.width='9px';dot.style.height='9px';});
+  el.addEventListener('mouseleave',()=>{pen.style.transform='translate(-2px,-18px) rotate(-20deg)';dot.style.width='4px';dot.style.height='4px';});
+});
+
+/* ── NAV ── */
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>50));
+function openMob(){document.getElementById('mob').classList.add('open');document.body.style.overflow='hidden';}
+function closeMob(){document.getElementById('mob').classList.remove('open');document.body.style.overflow='';}
+
+/* ── QUIZ ── */
+const questions=[
+  {
+    q:"Em uma reunião importante, como você normalmente age?",
+    opts:[
+      {t:"Espero as outras pessoas falarem e reajo ao que é dito.",s:1},
+      {t:"Preparo pontos, mas nem sempre consigo conduzi-los com a força que quero.",s:2},
+      {t:"Entro com uma estratégia clara e conduzo a conversa na direção que preciso.",s:3}
+    ]
+  },
+  {
+    q:"Quando você precisa apresentar uma ideia para superiores ou colegiados:",
+    opts:[
+      {t:"Fico inseguro e acho que minha ideia pode não ser bem recebida.",s:1},
+      {t:"Me preparo, mas percebo que a persuasão ainda é um desafio.",s:2},
+      {t:"Estruturo minha apresentação pensando nos interesses de quem vai ouvir.",s:3}
+    ]
+  },
+  {
+    q:"Sobre sua presença digital e marca pessoal:",
+    opts:[
+      {t:"Ainda não trabalhei isso — minhas redes são pessoais ou inativas.",s:1},
+      {t:"Posto às vezes, mas não tenho uma estratégia clara de posicionamento.",s:2},
+      {t:"Tenho uma presença consistente que reforça minha autoridade profissional.",s:3}
+    ]
+  },
+  {
+    q:"Em situações de conflito ou conversas difíceis no trabalho:",
+    opts:[
+      {t:"Evito o conflito ou fico muito tenso, o que compromete o resultado.",s:1},
+      {t:"Consigo ter a conversa, mas frequentemente não chego ao resultado que quero.",s:2},
+      {t:"Uso a comunicação como ferramenta para transformar conflito em solução.",s:3}
+    ]
+  },
+  {
+    q:"Como as pessoas ao redor descrevem sua comunicação profissional?",
+    opts:[
+      {t:"Ainda não me reconhecem como uma referência ou voz de autoridade.",s:1},
+      {t:"Me respeitam, mas sinto que ainda não sou visto como influenciador de decisões.",s:2},
+      {t:"Sou consultado, citado e reconhecido como referência na minha área.",s:3}
+    ]
+  }
+];
+
+const profiles={
+  low:{
+    label:"🔵 Comunicador Reativo",
+    title:"Você responde ao ambiente — ainda não o conduz.",
+    desc:"Sua comunicação acontece em modo reativo: você responde ao que acontece ao invés de antecipar e conduzir. Há muito potencial a ser desbloqueado — e é exatamente por isso que este curso foi criado.",
+    pct:72,
+    gaps:[
+      {ico:"🎯",txt:"Desenvolver posicionamento estratégico antes de entrar em reuniões e conversas importantes."},
+      {ico:"🗣️",txt:"Construir presença e voz de autoridade no seu ambiente profissional."},
+      {ico:"📣",txt:"Criar uma marca pessoal consistente que amplifique sua credibilidade."}
+    ]
+  },
+  mid:{
+    label:"🟡 Comunicador Estratégico",
+    title:"Você planeja — mas ainda falta presença e influência.",
+    desc:"Você já entende a importância da comunicação estratégica, mas percebe que há uma lacuna entre o que você quer comunicar e o impacto que de fato gera. O próximo nível está a um passo.",
+    pct:58,
+    gaps:[
+      {ico:"⚡",txt:"Ampliar sua capacidade de influenciar decisões — não apenas de apresentar bons argumentos."},
+      {ico:"🤝",txt:"Dominar a negociação baseada em interesses para gerar acordos mais vantajosos."},
+      {ico:"🔥",txt:"Consolidar sua marca pessoal como referência, não apenas como profissional competente."}
+    ]
+  },
+  high:{
+    label:"⭐ Autoridade Comunicacional",
+    title:"Você lidera a conversa — e influencia resultados.",
+    desc:"Você já possui instintos comunicacionais sólidos e exerce influência real no seu ambiente. O curso vai estruturar, aprofundar e expandir o que você já faz bem — e revelar pontos cegos que impedem o próximo salto.",
+    pct:35,
+    gaps:[
+      {ico:"🚀",txt:"Expandir sua influência para ambientes mais complexos: governo, mídia, conselhos."},
+      {ico:"📖",txt:"Transformar sua experiência em metodologia ensinável — o próximo passo do líder comunicador."},
+      {ico:"🌐",txt:"Escalar sua autoridade para além do ambiente local com estratégia digital de alto impacto."}
+    ]
+  }
+};
+
+let step=0,scores=[];
+
+function renderQ(){
+  const q=questions[step];
+  document.getElementById('quizQ').textContent=q.q;
+  document.getElementById('quizQ').style.animation='none';
+  setTimeout(()=>document.getElementById('quizQ').style.animation='',10);
+  document.getElementById('stepNum').textContent=step+1;
+  const opts=document.getElementById('quizOpts');
+  opts.innerHTML='';
+  ['A','B','C'].forEach((l,i)=>{
+    const o=q.opts[i];
+    const div=document.createElement('div');
+    div.className='quiz-opt';
+    div.innerHTML=`<div class="qo-letter">${l}</div><div class="qo-text">${o.t}</div>`;
+    div.onclick=()=>selectOpt(i,o.s,div);
+    opts.appendChild(div);
+  });
+  // Update dots
+  const dots=document.querySelectorAll('.qsi-dot');
+  dots.forEach((d,i)=>{d.className='qsi-dot'+(i<step?' done':i===step?' active':'');});
+  // Back btn
+  document.getElementById('backBtn').style.display=step>0?'inline-block':'none';
+}
+
+function selectOpt(idx,score,el){
+  document.querySelectorAll('.quiz-opt').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  scores[step]=score;
+  setTimeout(()=>{
+    step++;
+    if(step>=questions.length)showResult();
+    else renderQ();
+  },380);
+}
+
+function quizBack(){
+  if(step>0){step--;scores.pop();renderQ();}
+}
+
+function showResult(){
+  const total=scores.reduce((a,b)=>a+b,0);
+  const avg=total/5;
+  let profile=avg<=1.6?profiles.low:avg<=2.3?profiles.mid:profiles.high;
+
+  document.getElementById('qrLabel').textContent=profile.label;
+  document.getElementById('qrTitle').textContent=profile.title;
+  document.getElementById('qrDesc').textContent=profile.desc;
+  document.getElementById('qrPct').textContent=profile.pct+'% de potencial';
+  document.getElementById('qrGaps').innerHTML=profile.gaps.map(g=>`<div class="qr-gap"><div class="qrg-ico">${g.ico}</div><div class="qrg-txt">${g.txt}</div></div>`).join('');
+
+  document.getElementById('quizPanel').style.display='none';
+  document.getElementById('quizResult').style.display='block';
+
+  // Animate bar
+  setTimeout(()=>{document.getElementById('qrFill').style.width=profile.pct+'%';},200);
+}
+
+function resetQuiz(){
+  step=0;scores=[];
+  document.getElementById('quizPanel').style.display='block';
+  document.getElementById('quizResult').style.display='none';
+  renderQ();
+}
+
+renderQ();
+
+/* ── FAQ ── */
+function toggleFaq(btn){
+  const item=btn.closest('.faq-item');
+  const open=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!open)item.classList.add('open');
+}
+
+/* ── REVEAL ── */
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v');}),{threshold:.05});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
